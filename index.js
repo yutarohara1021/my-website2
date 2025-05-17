@@ -56,32 +56,77 @@ likeButton.addEventListener('click', () => {
 
 //ボタンjs
 document.addEventListener('DOMContentLoaded', function() {
-    const likeBtn = document.getElementById('likeBtn');
-    const shareBtn = document.querySelectorAll('.share-button'); // 複数のシェアボタンがある可能性を考慮
+    const likeBtn = document.getElementById('lileButton');
 
-    if (likeBtn) {
-        likeBtn.addEventListener('click', function() {
+    if (lileButton) {
+        lileButton.addEventListener('click', function() {
+            this.classList.toggle('liked');
+            
             dataLayer.push({
-                'event': 'button_clicked', // イベント名
-                'button_id': this.id,       // ボタンのID
-                'button_class': this.className, // ボタンのクラス
-                'button_text': this.textContent.trim(), // ボタンのテキスト
-                'action_type': 'like'        // アクションの種類
+                'event': 'user_interaction', // イベント
+                'interaction_type': 'いいね',
+                'liked': this.classList.contains('liked') // 現在の「いいね！」状態 (true/false)
             });
         });
     }
 
-    shareBtn.forEach(function(button) {
+   const shareButtons = document.querySelectorAll('.share-button'); // <button class="share-button"> が存在しないため、querySelectorAll は空の NodeList を返します
+
+    shareButtons.forEach(function(button) {
         button.addEventListener('click', function() {
             dataLayer.push({
-                'event': 'button_clicked',
-                'button_id': this.id,
-                'button_class': this.className,
-                'button_text': this.textContent.trim(),
-                'action_type': 'share'
+                'event': 'user_interaction',
+                'interaction_type': 'シェア'
+                
             });
         });
     });
 
     // 他のボタンについても同様に追加
+});
+
+
+const moveBtn = document.getElementById("moveBtn");
+    const image = document.getElementById("myImage");
+    let moved = false;
+
+    if (moveBtn && image) {
+        moveBtn.addEventListener("click", () => {
+            if (!moved) {
+                image.style.left = "300px"; // 動かす距離
+            } else {
+                image.style.left = "0";
+            }
+            moved = !moved;
+        });
+    }
+
+    const img = document.getElementById("myImage");
+    const img2 = document.getElementById("myImage2");
+    const img3 = document.getElementById("myImage3");
+
+
+if (img) {
+        img.addEventListener("click", () => {
+            img.classList.remove("bounce-animation");
+            void img.offsetWidth;
+            img.classList.add("bounce-animation");
+        });
+    }
+
+    if (img2) {
+        img2.addEventListener("click", () => {
+            img2.classList.remove("bounce-animation");
+            void img2.offsetWidth;
+            img2.classList.add("bounce-animation");
+        });
+    }
+
+    if (img3) {
+        img3.addEventListener("click", () => {
+            img3.classList.remove("bounce-animation");
+            void img3.offsetWidth;
+            img3.classList.add("bounce-animation");
+        });
+    }
 });

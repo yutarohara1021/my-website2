@@ -46,3 +46,42 @@ const likeButton = document.getElementById('likeButton');
 likeButton.addEventListener('click', () => {
     likeButton.classList.toggle('liked');
 });
+
+
+
+
+
+
+
+
+//ボタンjs
+document.addEventListener('DOMContentLoaded', function() {
+    const likeBtn = document.getElementById('likeBtn');
+    const shareBtn = document.querySelectorAll('.share-button'); // 複数のシェアボタンがある可能性を考慮
+
+    if (likeBtn) {
+        likeBtn.addEventListener('click', function() {
+            dataLayer.push({
+                'event': 'button_clicked', // イベント名
+                'button_id': this.id,       // ボタンのID
+                'button_class': this.className, // ボタンのクラス
+                'button_text': this.textContent.trim(), // ボタンのテキスト
+                'action_type': 'like'        // アクションの種類
+            });
+        });
+    }
+
+    shareBtn.forEach(function(button) {
+        button.addEventListener('click', function() {
+            dataLayer.push({
+                'event': 'button_clicked',
+                'button_id': this.id,
+                'button_class': this.className,
+                'button_text': this.textContent.trim(),
+                'action_type': 'share'
+            });
+        });
+    });
+
+    // 他のボタンについても同様に追加
+});

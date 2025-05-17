@@ -12,6 +12,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
+    document.addEventListener('DOMContentLoaded', function() {
+    let pageViewCount = parseInt(getCookie('pageViewCount')) || 0;
+    pageViewCount++;
+    setCookie('pageViewCount', pageViewCount, 30); // Cookieを30日間保存 (日数はお好みで調整)
+
+    dataLayer.push({
+        'event': 'page_view_incremented',
+        'pageViewCount': pageViewCount
+
+
 
 
     <meta charset="UTF-8">

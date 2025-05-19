@@ -13,37 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-    document.addEventListener('DOMContentLoaded', function() {
-    let pageViewCount = parseInt(getCookie('pageViewCount')) || 0;
-    pageViewCount++;
-    setCookie('pageViewCount', pageViewCount, 30); // Cookieを30日間保存 (日数はお好みで調整)
-
-    dataLayer.push({
-        'event': 'page_view_incremented',
-        'pageViewCount': pageViewCount
-
-
-//訪問回数カウント
-    document.addEventListener('DOMContentLoaded', function() {
-    let visitCount = parseInt(getCookie('visitCount')) || 0;
-    visitCount++;
-    setCookie('visitCount', visitCount, 365); // 365日間保存 (期間はお好みで調整)
-
-    dataLayer.push({
-        'event': 'visit_info', // 訪問情報を送信するイベント名
-        'visitCount': visitCount
-    });
-
-    function setCookie(name, value, days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        const expires = "expires=" + date.toUTCString();
-        document.cookie = name + "=" + value + ";" + expires + ";path=/";
-    }
-
-    function getCookie(name) {
-        const cookieName = name + "=";
-        const decodedCookie = decodeURIComponent(document.cookie);
+    
 
 
     
